@@ -25,4 +25,4 @@ Similar libraries in this space:
 
 ## Licence
 
-    Public domain, no licence required, no attribution necessary, no copyright asserted. Go nuts.
+Public domain, no licence required, no attribution necessary, no copyright asserted. Go nuts.

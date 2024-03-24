@@ -5,8 +5,8 @@ A Golang demonstration of reading specific entries within a large, remote, `.zip
 Uses:
 
 * Go
-* [snabb/httpreaderat](github.com/snabb/httpreaderat), a library providing a HTTP `io.ReaderAt` interface.
-* [avvmoto/buf-readerat](github.com/avvmoto/buf-readerat), a library that buffers `io.ReaderAt.ReadAt` reads. This reduces the number of HTTP `Partial` calls made.
+* [snabb/httpreaderat](https://github.com/snabb/httpreaderat), a library providing a HTTP `io.ReaderAt` interface.
+* [avvmoto/buf-readerat](https://github.com/avvmoto/buf-readerat), a library that buffers `io.ReaderAt.ReadAt` reads. This reduces the number of HTTP `Partial` calls made.
 * a `httptrace` tracer context to know if HTTP persistent connections are being used.
 
 ## Usage

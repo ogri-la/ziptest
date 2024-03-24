@@ -17,7 +17,7 @@ func main() {
 	// client trace to log whether the request's underlying tcp connection was re-used
 	clientTrace := &httptrace.ClientTrace{
 		GotConn: func(info httptrace.GotConnInfo) {
-			fmt.Printf("reused %s conn? %v\n", info.Conn.RemoteAddr(), info.Reused)
+			fmt.Printf("%s conn reused? %v\n", info.Conn.RemoteAddr(), info.Reused)
 		},
 	}
 	traceCtx := httptrace.WithClientTrace(context.Background(), clientTrace)
@@ -45,20 +45,22 @@ func main() {
 		panic("error creating zip.Reader: " + err.Error())
 	}
 
-	for _, f := range zip_reader.File {
-		fmt.Println(f.Name)
-		if f.Name == "TheUndermineJournal/TheUndermineJournal.toc" {
+	fmt.Println()
+
+	for _, zipfile_entry := range zip_reader.File {
+		fmt.Println(zipfile_entry.Name)
+		if zipfile_entry.Name == "TheUndermineJournal/TheUndermineJournal.toc" {
 			fmt.Println("---")
-			fh, err := f.Open()
+			fh, err := zipfile_entry.Open()
 			if err != nil {
 				panic("error opening zipfile entry: " + err.Error())
 			}
 
-			bl, err := io.ReadAll(fh)
+			zipfile_entry_bytes, err := io.ReadAll(fh)
 			if err != nil {
 				panic("error reading bytes from zipfile entry: " + err.Error())
 			}
-			fmt.Println(string(bl))
+			fmt.Println(string(zipfile_entry_bytes))
 			fmt.Println("---")
 		}
 	}

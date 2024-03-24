@@ -1,4 +1,4 @@
-module readzip
+module ziptest
 
 go 1.21.6
 
